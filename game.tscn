@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://caafrhh77uqiq"]
+[gd_scene format=3 uid="uid://caafrhh77uqiq"]
 
 [ext_resource type="PackedScene" uid="uid://d3xsyu3ku540o" path="res://world.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dso3nnivwbl7h" path="res://player.tscn" id="2_feb5d"]
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" unique_id=795056231]
 
-[node name="world" parent="." instance=ExtResource("1_e2o6t")]
+[node name="world" parent="." unique_id=1030123359 instance=ExtResource("1_e2o6t")]
 
-[node name="Player" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(444, 381)
+[node name="Player" parent="." unique_id=1063783341 instance=ExtResource("2_feb5d")]
+position = Vector2(140, 455)
