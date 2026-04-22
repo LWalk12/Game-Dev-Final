@@ -3,13 +3,16 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var x = 'right'
+var dmg = 10
 
 func _ready() -> void:
 	$Sprite2D.animation = 'idle'
 	$Sprite2D.play()
 
 func _physics_process(delta: float) -> void:
-	$atck.disabled =true
+	$atckl.disabled = true
+	$atckr.disabled = true
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -22,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	var attack := Input.is_action_pressed("attack")
+	
 	if direction:
 		velocity.x = direction * SPEED
 		$Sprite2D.animation = 'walk'
@@ -30,13 +34,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$Sprite2D.animation = 'idle'
+	if velocity.x > 0:
+		x = 'right'
+	elif velocity.x < 0:
+		x = 'left'
 	
-	if velocity.x < 0:
-		$atck.position.x *= -1
+	
 	
 	if attack:
 		$Sprite2D.animation = 'quickAttack'
-		$atck.disabled = false
+		dmg += 10
 		velocity.x = (direction * SPEED) * 0.5
-		
+	
+	if Input.is_action_just_released("attack"):
+		$Sprite2D.animation = 'release'
+		if x=='left':
+			$atckl.disabled = false
+		elif x=='right':
+			$atckr.disabled = false
 	move_and_slide()
