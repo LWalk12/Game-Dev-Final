@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dso3nnivwbl7h"]
+[gd_scene format=3 uid="uid://dso3nnivwbl7h"]
 
 [ext_resource type="Texture2D" uid="uid://df6jcsih6vbsd" path="res://Final/idle.png" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://c115qi5e55vyj" path="res://player.gd" id="1_sweqy"]
@@ -66,36 +66,36 @@ height = 138.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw050"]
 size = Vector2(93, 20)
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" unique_id=487630303]
 script = ExtResource("1_sweqy")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1563829956]
 script = ExtResource("2_2hs0m")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=563969341]
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"walk"
+animation = &"idle"
 
-[node name="hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="hitbox" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1018940962]
 light_mask = 3
 visibility_layer = 3
 shape = SubResource("CapsuleShape2D_1jxqw")
 
-[node name="atckr" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="atckr" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1288904119]
 position = Vector2(115.5, -33)
 shape = SubResource("RectangleShape2D_dw050")
 disabled = true
 debug_color = Color(0.8901961, 0.003921569, 0.09803922, 0.62352943)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1151311584]
 limit_left = 0
 limit_bottom = 650
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="atckl" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="atckl" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1218068942]
 position = Vector2(-115.5, -33)
 shape = SubResource("RectangleShape2D_dw050")
 disabled = true
