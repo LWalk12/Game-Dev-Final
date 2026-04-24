@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var x = 'right'
-var dmg = 10
+var multi
 
 func _ready() -> void:
 	$Sprite2D.animation = 'idle'
@@ -43,8 +43,8 @@ func _physics_process(delta: float) -> void:
 	
 	if attack:
 		$Sprite2D.animation = 'quickAttack'
-		dmg += 10
 		velocity.x = (direction * SPEED) * 0.5
+		#multi += delta
 	
 	if Input.is_action_just_released("attack"):
 		$Sprite2D.animation = 'release'
