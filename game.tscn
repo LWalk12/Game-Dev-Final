@@ -1,29 +1,85 @@
-[gd_scene load_steps=5 format=3 uid="uid://caafrhh77uqiq"]
+[gd_scene format=3 uid="uid://caafrhh77uqiq"]
 
 [ext_resource type="PackedScene" uid="uid://d3xsyu3ku540o" path="res://world.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://dpe6sl0v8ou22" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dso3nnivwbl7h" path="res://player.tscn" id="2_feb5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
-size = Vector2(8107, 20)
+size = Vector2(8295.5, 20)
 
-[node name="game" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
+radius = 41.59327
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(635, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jktm"]
+size = Vector2(236.5, 182.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(1839, 536)
+
+[node name="game" type="Node2D" unique_id=286671055]
 script = ExtResource("1_feb5d")
 
-[node name="worldLimit" type="Area2D" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1644906063]
+color = Color(0.9846609, 0.7587748, 0.6054787, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="worldLimit"]
-position = Vector2(3741, 713)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1945726254]
+color = Color(0.47528744, 0.2434819, 0.1690968, 1)
+energy = 0.94
+blend_mode = 1
+
+[node name="worldLimit" type="Area2D" parent="." unique_id=1893782116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldLimit" unique_id=969427913]
+position = Vector2(3835.25, 713)
 shape = SubResource("RectangleShape2D_feb5d")
 
-[node name="world" parent="." instance=ExtResource("1_e2o6t")]
+[node name="world" parent="." unique_id=478116668 instance=ExtResource("1_e2o6t")]
 
-[node name="Player" parent="." instance=ExtResource("2_feb5d")]
-light_mask = 3
+[node name="Player" parent="." unique_id=493232396 instance=ExtResource("2_feb5d")]
 visibility_layer = 3
 position = Vector2(142, 466)
 
-[node name="playerSpawn" type="Marker2D" parent="."]
-position = Vector2(258, 473)
+[node name="playerSpawn" type="Marker2D" parent="." unique_id=315683060]
+position = Vector2(322, 448)
+
+[node name="interact" type="Node2D" parent="." unique_id=1870096065]
+
+[node name="sword" type="Area2D" parent="interact" unique_id=1599410755]
+collision_layer = 3
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact/sword" unique_id=1147174502]
+visibility_layer = 3
+position = Vector2(1152, 423)
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="buildings" type="Node2D" parent="." unique_id=482700561]
+
+[node name="Area2D" type="Area2D" parent="buildings" unique_id=1042954326]
+light_mask = 256
+visibility_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="buildings/Area2D" unique_id=412087736]
+light_mask = 256
+visibility_layer = 256
+position = Vector2(1152.5, 413.5)
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="shed" type="CollisionShape2D" parent="buildings/Area2D" unique_id=546366383]
+light_mask = 256
+visibility_layer = 256
+position = Vector2(2048.75, 453.75)
+shape = SubResource("RectangleShape2D_7jktm")
+
+[node name="castle" type="CollisionShape2D" parent="buildings/Area2D" unique_id=896119600]
+position = Vector2(6670.5, 238)
+shape = SubResource("RectangleShape2D_ryrav")
 
 [connection signal="body_entered" from="worldLimit" to="." method="_on_world_limit_body_entered"]
+[connection signal="body_entered" from="interact/sword" to="." method="_on_sword_body_entered"]
+[connection signal="body_exited" from="interact/sword" to="." method="_on_sword_body_exited"]
+[connection signal="body_entered" from="buildings/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="buildings/Area2D" to="." method="_on_area_2d_body_exited"]

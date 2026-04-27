@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="testing_FinalProject"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [input]
@@ -68,6 +68,7 @@ attack={
 
 2d_render/layer_1="floor"
 2d_render/layer_2="Player"
+2d_render/layer_9="buildings"
 2d_physics/layer_1="floor"
 
 [physics]

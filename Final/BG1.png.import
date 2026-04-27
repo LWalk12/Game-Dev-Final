@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di0dimoki7kr0"
-path="res://.godot/imported/roofs2.png-98fb9174e7a4bbf9a3c62e2d6cfc1b0a.ctex"
+uid="uid://clwbn2cdb5u3t"
+path="res://.godot/imported/BG1.png-1bc45fe9e24e22cf159899f625e95ebd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Final/roofs2.png"
-dest_files=["res://.godot/imported/roofs2.png-98fb9174e7a4bbf9a3c62e2d6cfc1b0a.ctex"]
+source_file="res://Final/BG1.png"
+dest_files=["res://.godot/imported/BG1.png-1bc45fe9e24e22cf159899f625e95ebd.ctex"]
 
 [params]
 
